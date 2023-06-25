@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { number } = require("yargs");
 const Schema = mongoose.Schema;
 require('../app.js') ;
 
@@ -6,6 +7,7 @@ const memberSchema = new Schema({
     id:Number,
     firstName: String,
     lastName: String,
+    phone : number , 
     email: String,
     password: String ,
     joinDate : Date,

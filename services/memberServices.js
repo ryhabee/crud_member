@@ -13,10 +13,26 @@ const memberModel = require('../models/member');
 //     throw error;
 //   }
 // };
+exports.getAllMembers = async () => {
+  return await memberModel.find();
+};
 
 exports.addMember =async(member)=>{
   return await memberModel.create(member) ;
 }
+exports.getMemberById = async (id) => {
+  return await memberModel.findById(id);
+};
+
+exports.getMemberByEmail = async (email) => {
+  try {
+    const member = await memberModel.findOne({ email: email }); 
+    return member; 
+  } catch (err) {
+    throw new Error('Failed to fetch member by email.'); // Throw an error if there's an issue with the database query
+  }
+};
+
 
 
 
